@@ -5,6 +5,11 @@ class NavController extends GetxController {
 
   void changeTabIndex(int index) {
     selectedIndex = index;
-    update(); // GetBuilder এই update কলেই রিফ্রেশ হয়
+    update();
+  }
+
+  void onItemTapped(int index) {
+    selectedIndex = index;
+    update();
   }
 }

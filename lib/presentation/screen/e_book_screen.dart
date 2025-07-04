@@ -10,6 +10,8 @@ class EBookScreen extends StatefulWidget {
 class _EBookScreenState extends State<EBookScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      body: Center(child: Text("E-Book Screen"),),
+    );
   }
 }

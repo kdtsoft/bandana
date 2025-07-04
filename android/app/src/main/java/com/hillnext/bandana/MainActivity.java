@@ -1,4 +1,4 @@
-package com.example.dhammapath;
+package com.hillnext.bandana;
 
 import io.flutter.embedding.android.FlutterActivity;
 

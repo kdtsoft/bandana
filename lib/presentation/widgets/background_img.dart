@@ -1,3 +1,4 @@
+import 'package:dhammapath/presentation/utils/const.dart';
 import 'package:flutter/material.dart';
 
 class BackGroundImg extends StatelessWidget {
@@ -5,11 +6,12 @@ class BackGroundImg extends StatelessWidget {
     super.key,
   });
 
+
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
       child: Image.asset(
-        "assets/images/bg2.jpg",
+        ConstData.bgImagePath,
         fit: BoxFit.cover,
       ),
     );

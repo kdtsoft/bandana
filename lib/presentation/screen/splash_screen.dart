@@ -1,6 +1,9 @@
-import 'package:dhammapath/presentation/screen/main_screen.dart';
+import 'package:dhammapath/presentation/screen/bandana_screen.dart';
+
+import 'package:dhammapath/presentation/utils/const.dart';
 import 'package:dhammapath/presentation/widgets/app_logo.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -11,39 +14,41 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
     _moveToNextScreen();
   }
 
+  Future<void> _moveToNextScreen() async {
+    await Future.delayed(const Duration(seconds: 2));
+    Get.offAll(() => BandanaScreen(title: "বন্দনা সমগ্র"));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(),
-            AppLogo(),
-            Spacer(),
-            CircularProgressIndicator(),
-            SizedBox(height: 16),
-            Text('Version 1.0.0'),
-            SizedBox(height: 16),
+            const AppLogo(),
+            Text(
+              "বন্দনা সমগ্র",
+              style: TextStyle(
+                fontSize: 30.sp,
+                fontWeight: FontWeight.bold,
+                color: Colors.teal[700],
+              ),
+            ),
+            const CircularProgressIndicator(),
+            SizedBox(height: 8.h),
+            Text(ConstData.appVersion),
+
           ],
         ),
       ),
-
     );
   }
-}
-
-
-
-
-Future<void> _moveToNextScreen() async {
-  await Future.delayed(const Duration(seconds: 2));
-  // Navigate to the next screen, e.g., HomeScreen
-   Get.offAll(() => MainScreen());
 }

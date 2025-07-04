@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'AdorshoLipi';
+  src: url('assets/fonts/adorsholipi.ttf');
+}
+
+
+.container {
+  max-width: 600px; /* বা তোমার পছন্দমতো */
+  margin: 0 auto;   /* ডিভকে horizontally centered করে */
+  padding: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+  font-family: 'AdorshoLipi', sans-serif; /* চাইলে ফন্টও দিতে পারো */
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section h2 {
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.section p {
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.end {
+      font-weight: bold;
+      font-size: 22px;
+      color: #d32f2f;
+      text-align: center;
+    }

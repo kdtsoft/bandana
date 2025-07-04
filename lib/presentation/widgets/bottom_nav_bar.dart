@@ -1,4 +1,6 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dhammapath/presentation/controller/nav_controller.dart';
+import 'package:dhammapath/presentation/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -8,29 +10,37 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80.h,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: GetBuilder<NavController>(
-        builder: (navController) {
-          return BottomNavigationBar(
-            backgroundColor: Color(0xFF001732),
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.brown,
-            iconSize: 30.sp,
-            selectedFontSize: 16.sp,
-            unselectedFontSize: 14.sp,
-            currentIndex: navController.selectedIndex,
-            onTap: navController.changeTabIndex,
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-              BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Bookmark'),
-              BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Setting'),
-            ],
-          );
-        },
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final backgroundColor = isDark ? AppColors.darkPrimary : AppColors.lightPrimary;
+    final iconColor = isDark ? AppColors.darkIcon : Colors.white;
+    final inactiveColor = Colors.white70;
+
+    return GetBuilder<NavController>(
+      builder: (navController) => CurvedNavigationBar(
+        index: navController.selectedIndex,
+        onTap: navController.changeTabIndex,
+        backgroundColor: Colors.transparent, // page background
+        color: backgroundColor, // nav bar color
+        buttonBackgroundColor: backgroundColor, // active icon bg color
+        animationDuration: const Duration(milliseconds: 400),
+        height: 60.h,
+        items: [
+          Icon(
+            Icons.home,
+            size: 30,
+            color: navController.selectedIndex == 0 ? iconColor : inactiveColor,
+          ),
+          Icon(
+            Icons.bookmark,
+            size: 30,
+            color: navController.selectedIndex == 1 ? iconColor : inactiveColor,
+          ),
+          Icon(
+            Icons.settings,
+            size: 30,
+            color: navController.selectedIndex == 2 ? iconColor : inactiveColor,
+          ),
+        ],
       ),
     );
   }
